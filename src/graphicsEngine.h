@@ -11,7 +11,7 @@
 using namespace sf;
 using namespace std;
 
-namespace graphicsEngine {
+namespace GraphicsEngine {
 
     typedef struct{
         uint8_t r, g, b, a;
