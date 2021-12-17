@@ -21,10 +21,20 @@ namespace GraphicsEngine {
         window->close();
         free(window);
         free(frame);
+        exit(0);
 	}
 
 	void graphicsEngine::update() {
         while (1) {
+            // Graphics Engine housekeeping stuff
+            if (window->isOpen()) {
+                Event event;
+                window->pollEvent(event);
+                if (event.type == Event::Closed) {
+                    exit(0);
+                }
+            }
+
             // Mutex lock to prevent concurrent access between graphics and emulation thread.
             dataShare->lock.lock();
             while (!dataShare->pixels.empty()) {
