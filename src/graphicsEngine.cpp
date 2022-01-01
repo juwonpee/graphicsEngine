@@ -24,7 +24,13 @@ namespace GraphicsEngine {
 	}
 
 	void graphicsEngine::update() {
+        time_t start = time (NULL);
+        
+        uint64_t frames = 0;
         while (1) {
+            // Check fps
+            time_t now = time (NULL);
+
             // Mutex lock to prevent concurrent access between graphics and emulation thread.
             dataShare->lock.lock();
             while (!dataShare->pixels.empty()) {
@@ -48,6 +54,17 @@ namespace GraphicsEngine {
             window->clear(Color::Black);
             window->draw(sprite);
             window->display();  // Finished frame
+
+            // End time
+            if (now > start) {
+                cout << "fps:" <<frames << endl;
+                start = now;
+                frames = 0;
+                frames++;
+            }
+            else {
+                frames++;
+            }
         }
 
 	}

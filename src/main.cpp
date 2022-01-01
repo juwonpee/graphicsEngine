@@ -21,6 +21,8 @@ int main() {
         pixel_t pixel;
         pixel.r = count; pixel.g = count; pixel.b = count; pixel.a = count;
 
+        if (count == 201) count = 0;
+
         dataShare.lock.lock();
         dataShare.pixels.push(pixel);
         dataShare.lock.unlock();
