@@ -25,15 +25,12 @@ namespace GraphicsEngine {
 	}
 
 	void graphicsEngine::update() {
+        time_t start = time (NULL);
+        
+        uint64_t frames = 0;
         while (1) {
-            // Graphics Engine housekeeping stuff
-            if (window->isOpen()) {
-                Event event;
-                window->pollEvent(event);
-                if (event.type == Event::Closed) {
-                    exit(0);
-                }
-            }
+            // Check fps
+            time_t now = time (NULL);
 
             // Mutex lock to prevent concurrent access between graphics and emulation thread.
             dataShare->lock.lock();
@@ -58,6 +55,17 @@ namespace GraphicsEngine {
             window->clear(Color::Black);
             window->draw(sprite);
             window->display();  // Finished frame
+
+            // End time
+            if (now > start) {
+                cout << "fps:" <<frames << endl;
+                start = now;
+                frames = 0;
+                frames++;
+            }
+            else {
+                frames++;
+            }
         }
 
 	}

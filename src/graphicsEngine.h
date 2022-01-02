@@ -3,10 +3,12 @@
 #include "types.h"
 #include <SFML/Graphics.hpp>
 #include <mutex>
-#include "string.h"
+#include <cstring>
 #include <queue>
 #include <memory>
 #include <vector>
+#include <ctime>
+#include <iostream>
 
 using namespace sf;
 using namespace std;
