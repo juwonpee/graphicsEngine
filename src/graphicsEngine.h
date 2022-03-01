@@ -1,6 +1,5 @@
 #pragma once
 
-#include "types.h"
 #include <SFML/Graphics.hpp>
 #include <mutex>
 #include <cstring>
