@@ -1,0 +1,8 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/juwonpee/Desktop/Projects/graphicsEngine'
+g++  -Isrc -c src/graphicsEngine.cpp -o src/graphicsEngine.o -ggdb -pipe -O2
+g++  -Isrc -c src/main.cpp -o src/main.o -ggdb -pipe -O2
+g++ src/graphicsEngine.o src/main.o -o build/graphicsEngine -lsfml-graphics -lsfml-window -lsfml-system -lpthread
+find . -name "*.o" | xargs -r rm 
+make: Leaving directory '/home/juwonpee/Desktop/Projects/graphicsEngine'
+ 

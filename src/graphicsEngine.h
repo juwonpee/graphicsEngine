@@ -18,6 +18,7 @@ namespace GraphicsEngine {
         uint8_t r, g, b, a;
     } pixel_t;
 
+    /* Pixels are first placed from the top rows left to right and down the consecutive columns */
     typedef struct{
         mutex lock;
         queue<pixel_t> pixels;    // Pixels are always starting from 0,0 to build a frame
